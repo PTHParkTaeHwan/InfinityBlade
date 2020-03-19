@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "IBCharacter.h"
-
+#include "IBAnimInstance.h"
 
 // Sets default values
 AIBCharacter::AIBCharacter()
@@ -28,23 +28,28 @@ AIBCharacter::AIBCharacter()
 
 	GetMesh()->SetAnimationMode(EAnimationMode::AnimationBlueprint);
 
+	//애니메이션 인스턴스 가져오기
 	static ConstructorHelpers::FClassFinder<UAnimInstance> WARRIOR_ANIM(TEXT("/Game/Book/Animations/WarriorAnimBlueprint.WarriorAnimBlueprint_C"));
 	if (WARRIOR_ANIM.Succeeded())
 	{
 		GetMesh()->SetAnimInstanceClass(WARRIOR_ANIM.Class);
 	}
 
-	SetControlMode(EControlMode::GTA);
 
+	//카메라 모드 전환
+	SetControlMode(EControlMode::GTA);
 	ArmLengthSpeed = 3.0f;
 	ArmLocationSpeed = 5.0f;
 	CameraLocationSpeed = 1.5f;
 	GetCharacterMovement()->JumpZVelocity = 600.0f;
 
+	//걷기 모드 전환
 	IsRun = false;
 	CurrentShiftButtonOn = false;
 	GetCharacterMovement()->MaxWalkSpeed = 400;
 
+	//공격 모션 관리
+	IsAttacking = false;
 }
 
 // Called when the game starts or when spawned
@@ -115,6 +120,16 @@ void AIBCharacter::Tick(float DeltaTime)
 
 }
 
+void AIBCharacter::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+	IBAnim = Cast<UIBAnimInstance>(GetMesh()->GetAnimInstance());
+	ABCHECK(nullptr != IBAnim);
+	//매크로를 활용해 애님 인스턴스의 OnMontageEnded 델리게이트와 우리가 선언한 OnAttackMontageEnded를 연결한다.
+	IBAnim->OnMontageEnded.AddDynamic(this, &AIBCharacter::OnAttackMontageEnded);
+
+}
+
 // Called to bind functionality to input
 void AIBCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -129,6 +144,7 @@ void AIBCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &AIBCharacter::Jump);
 	PlayerInputComponent->BindAction(TEXT("Runing"), EInputEvent::IE_Pressed, this, &AIBCharacter::ShiftButtonChange);
 	PlayerInputComponent->BindAction(TEXT("Runing"), EInputEvent::IE_Released, this, &AIBCharacter::ShiftButtonChange);
+	PlayerInputComponent->BindAction(TEXT("Attack"), EInputEvent::IE_Pressed, this, &AIBCharacter::Attack);
 
 }
 bool AIBCharacter::GetIsRun()
@@ -214,6 +230,19 @@ void AIBCharacter::ShiftButtonChange()
 	{
 		CurrentShiftButtonOn = false;
 	}
+}
+
+void AIBCharacter::Attack()
+{
+	if (IsAttacking) return;
+	IBAnim->PlayAttackMontage();
+	IsAttacking = true;
+}
+
+void AIBCharacter::OnAttackMontageEnded(UAnimMontage * Montage, bool bInterrupted)
+{
+	ABCHECK(IsAttacking);
+	IsAttacking = false;
 }
 
 

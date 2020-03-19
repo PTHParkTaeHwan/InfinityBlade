@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "IBCharacter.generated.h"
 
+
+
 UCLASS()
 class INFINITYBLADE_API AIBCharacter : public ACharacter
 {
@@ -33,6 +35,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	virtual void PostInitializeComponents() override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -53,6 +56,8 @@ private:
 	//카메라 움직임
 	void LookUp(float NewAxisValue);
 	void Turn(float NewAxisValue);
+	
+	//캐릭터 걷기 모션
 	void ModeChange();
 	void RunChange();
 	void ShiftButtonChange();
@@ -69,4 +74,18 @@ private:
 
 	bool IsRun;
 	bool CurrentShiftButtonOn;
+
+	//공격 모션
+	void Attack();
+
+	UFUNCTION()
+	void OnAttackMontageEnded(UAnimMontage* Montage, bool bInterrupted);
+
+private:
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = Attack, Meta = (AllowPrivateAccess = true))
+	bool IsAttacking;
+
+	UPROPERTY()
+	class UIBAnimInstance* IBAnim;
+
 };

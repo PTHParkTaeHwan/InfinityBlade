@@ -18,7 +18,12 @@ public:
 	UIBAnimInstance();
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 
-	void test(class ACharacter* _Character);
+	void PlayAttackMontage();
+
+private:
+	UFUNCTION()
+	void AnimNotify_AttackHitCheck();
+
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Pawn, Meta = (AllowPrivateAccess = true))
 	float CurrentPawnSpeed;
@@ -29,5 +34,6 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Pawn, Meta = (AllowPrivateAccess = true))
 	bool IsRun;
 
-
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Attack, Meta = (AllowPrivateAccess = true))
+	UAnimMontage* AttackMontage;
 };
