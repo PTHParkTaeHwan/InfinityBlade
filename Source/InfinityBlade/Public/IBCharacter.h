@@ -43,6 +43,9 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = Camera)
 	UCameraComponent* Camera;
 	
+public:
+	bool GetIsRun();
+
 private:
 	//캐릭터 움직임
 	void UpDown(float NewAxisValue);
@@ -51,6 +54,8 @@ private:
 	void LookUp(float NewAxisValue);
 	void Turn(float NewAxisValue);
 	void ModeChange();
+	void RunChange();
+	void ShiftButtonChange();
 
 	float ArmLengthTo = 0.0f;
 	FRotator ArmRotationTo = FRotator::ZeroRotator;
@@ -61,4 +66,7 @@ private:
 
 	FVector CameraLocationTo = FVector::ZeroVector;
 	float CameraLocationSpeed = 0.0f;
+
+	bool IsRun;
+	bool CurrentShiftButtonOn;
 };

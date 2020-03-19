@@ -18,10 +18,16 @@ public:
 	UIBAnimInstance();
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 
+	void test(class ACharacter* _Character);
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Pawn, Meta = (AllowPrivateAccess = true))
 	float CurrentPawnSpeed;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Pawn, Meta = (AllowPrivateAccess = true))
+	bool IsInAir;
 	
-	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Pawn, Meta = (AllowPrivateAccess = true))
+	bool IsRun;
+
+
 };

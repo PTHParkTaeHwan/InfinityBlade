@@ -20,7 +20,7 @@ AIBCharacter::AIBCharacter()
 	SpringArm->SetRelativeRotation(FRotator(-15.0f, 0.0f, 0.0f));
 	
 
-	static ConstructorHelpers::FObjectFinder<USkeletalMesh> CardBoard(TEXT("/Game/InfinityBladeWarriors/Character/CompleteCharacters/SK_CharM_Cardboard.SK_CharM_Cardboard"));
+	static ConstructorHelpers::FObjectFinder<USkeletalMesh> CardBoard(TEXT("/Game/InfinityBladeWarriors/Character/CompleteCharacters/SK_CharM_Bladed.SK_CharM_Bladed"));
 	if (CardBoard.Succeeded())
 	{
 		GetMesh()->SetSkeletalMesh(CardBoard.Object);
@@ -39,6 +39,12 @@ AIBCharacter::AIBCharacter()
 	ArmLengthSpeed = 3.0f;
 	ArmLocationSpeed = 5.0f;
 	CameraLocationSpeed = 1.5f;
+	GetCharacterMovement()->JumpZVelocity = 600.0f;
+
+	IsRun = false;
+	CurrentShiftButtonOn = false;
+	GetCharacterMovement()->MaxWalkSpeed = 400;
+
 }
 
 // Called when the game starts or when spawned
@@ -105,6 +111,8 @@ void AIBCharacter::Tick(float DeltaTime)
 		break;
 	}
 
+	RunChange();
+
 }
 
 // Called to bind functionality to input
@@ -118,7 +126,14 @@ void AIBCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &AIBCharacter::Turn);
 	PlayerInputComponent->BindAction(TEXT("DefenseMode"), EInputEvent::IE_Pressed, this, &AIBCharacter::ModeChange);
 	PlayerInputComponent->BindAction(TEXT("DefenseMode"), EInputEvent::IE_Released, this, &AIBCharacter::ModeChange);
+	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &AIBCharacter::Jump);
+	PlayerInputComponent->BindAction(TEXT("Runing"), EInputEvent::IE_Pressed, this, &AIBCharacter::ShiftButtonChange);
+	PlayerInputComponent->BindAction(TEXT("Runing"), EInputEvent::IE_Released, this, &AIBCharacter::ShiftButtonChange);
 
+}
+bool AIBCharacter::GetIsRun()
+{
+	return IsRun;
 }
 void AIBCharacter::UpDown(float NewAxisValue)
 {
@@ -167,6 +182,37 @@ void AIBCharacter::ModeChange()
 	{
 		//GetController()->SetControlRotation(SpringArm->RelativeRotation);
 		SetControlMode(EControlMode::GTA);
+	}
+}
+
+void AIBCharacter::RunChange()
+{
+	if (CurrentShiftButtonOn && this->GetVelocity().Size() > 0)
+	{
+		IsRun = true;
+		GetCharacterMovement()->MaxWalkSpeed = 600;
+	}
+	else if(!CurrentShiftButtonOn && this->GetVelocity().Size() > 0)
+	{
+		IsRun = false;
+		GetCharacterMovement()->MaxWalkSpeed = 400;
+	}
+	else
+	{
+		IsRun = false;
+		GetCharacterMovement()->MaxWalkSpeed = 400;
+	}
+}
+
+void AIBCharacter::ShiftButtonChange()
+{
+	if (!CurrentShiftButtonOn)
+	{
+		CurrentShiftButtonOn = true;
+	}
+	else if (CurrentShiftButtonOn)
+	{
+		CurrentShiftButtonOn = false;
 	}
 }
 
