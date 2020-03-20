@@ -2,6 +2,7 @@
 
 #include "IBCharacter.h"
 #include "IBAnimInstance.h"
+#include "DrawDebugHelpers.h"
 
 // Sets default values
 AIBCharacter::AIBCharacter()
@@ -35,6 +36,19 @@ AIBCharacter::AIBCharacter()
 		GetMesh()->SetAnimInstanceClass(WARRIOR_ANIM.Class);
 	}
 
+	//무기 부착하기
+	FName WeaponSocket(TEXT("hand_rSocket"));
+	if (GetMesh()->DoesSocketExist(WeaponSocket))
+	{
+		Weapon = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WEAPON"));
+		static ConstructorHelpers::FObjectFinder<USkeletalMesh> SK_WEAPON(TEXT("/Game/InfinityBladeWeapons/Weapons/Blade/Swords/Blade_HeroSword22/SK_Blade_HeroSword22.SK_Blade_HeroSword22"));
+		if (SK_WEAPON.Succeeded())
+		{
+			Weapon->SetSkeletalMesh(SK_WEAPON.Object);
+		}
+
+		Weapon->SetupAttachment(GetMesh(), WeaponSocket);
+	}
 
 	//카메라 모드 전환
 	SetControlMode(EControlMode::GTA);
@@ -54,6 +68,13 @@ AIBCharacter::AIBCharacter()
 	//공격 콤포 관리
 	MaxCombo = 4;
 	AttackEndComboState();
+
+	//콜리전 프리셋 설정
+	GetCapsuleComponent()->SetCollisionProfileName(TEXT("IBCharacter"));
+
+	//공격 범위 디버그
+	AttackRange = 250.0f;
+	AttackRadius = 90.0f;
 }
 
 // Called when the game starts or when spawned
@@ -142,6 +163,22 @@ void AIBCharacter::PostInitializeComponents()
 			IBAnim->JumpToAttackMontageSection(CurrentCombo);
 		}
 	});
+
+	IBAnim->OnAttackHitCheck.AddUObject(this, &AIBCharacter::AttackCheck);
+}
+
+float AIBCharacter::TakeDamage(float DamageAmount, FDamageEvent const & DamageEvent, AController * EventInstigator, AActor * DamageCauser)
+{
+	float FinalDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	ABLOG(Warning, TEXT("%s , %f"), *GetName(), FinalDamage);
+
+	if (FinalDamage > 0.0f)
+	{
+		IBAnim->SetDeadAnim();
+		SetActorEnableCollision(false);
+	}
+
+	return FinalDamage;
 }
 
 // Called to bind functionality to input
@@ -205,13 +242,13 @@ void AIBCharacter::ModeChange()
 {
 	if (CurrentControlMode == EControlMode::GTA)
 	{
-		//GetController()->SetControlRotation(GetActorRotation());
-		SetControlMode(EControlMode::DEFENSE);
+//GetController()->SetControlRotation(GetActorRotation());
+SetControlMode(EControlMode::DEFENSE);
 	}
 	else if (CurrentControlMode == EControlMode::DEFENSE)
 	{
-		//GetController()->SetControlRotation(SpringArm->RelativeRotation);
-		SetControlMode(EControlMode::GTA);
+	//GetController()->SetControlRotation(SpringArm->RelativeRotation);
+	SetControlMode(EControlMode::GTA);
 	}
 }
 
@@ -222,7 +259,7 @@ void AIBCharacter::RunChange()
 		IsRun = true;
 		GetCharacterMovement()->MaxWalkSpeed = 600;
 	}
-	else if(!CurrentShiftButtonOn && this->GetVelocity().Size() > 0)
+	else if (!CurrentShiftButtonOn && this->GetVelocity().Size() > 0)
 	{
 		IsRun = false;
 		GetCharacterMovement()->MaxWalkSpeed = 400;
@@ -287,6 +324,50 @@ void AIBCharacter::AttackEndComboState()
 	IsComboInputOn = false;
 	CanNextCombo = false;
 	CurrentCombo = 0;
+}
+
+void AIBCharacter::AttackCheck()
+{
+	
+	FCollisionQueryParams Params(NAME_None, false, this);
+	TArray<FHitResult> HitResults;
+	bool bResults = GetWorld()->SweepMultiByChannel(HitResults,
+		GetActorLocation(),
+		GetActorLocation() + GetActorForwardVector() * AttackRange,
+		FQuat::Identity,
+		ECollisionChannel::ECC_GameTraceChannel2,
+		FCollisionShape::MakeSphere(AttackRadius),
+		Params);
+
+#if ENABLE_DRAW_DEBUG
+
+	FVector TraceVec = GetActorForwardVector() * AttackRange;
+	FVector Center = GetActorLocation() + TraceVec * 0.5f;
+	float HalfHeight = AttackRange * 0.5f + AttackRadius;
+	FQuat CapsuleRot = FRotationMatrix::MakeFromZ(TraceVec).ToQuat();
+	FColor DrawColor = bResults ? FColor::Green : FColor::Red;
+	float DebugLifeTime = 2.0f;
+
+	DrawDebugCapsule(GetWorld(),
+		Center,
+		HalfHeight,
+		AttackRadius,
+		CapsuleRot,
+		DrawColor,
+		false,
+		DebugLifeTime);
+
+#endif
+	if (bResults)
+	{
+		for (FHitResult HitResult : HitResults)
+		{
+			ABLOG(Warning, TEXT("hit! %s"), *HitResult.Actor->GetName());
+
+			FDamageEvent DamageEvent;
+			HitResult.Actor->TakeDamage(50.0f, DamageEvent, GetController(), this);
+		}
+	}
 }
 
 
