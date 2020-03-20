@@ -2,6 +2,7 @@
 
 #include "IBCharacter.h"
 #include "IBAnimInstance.h"
+#include "IBWeapon.h"
 #include "DrawDebugHelpers.h"
 
 // Sets default values
@@ -36,8 +37,8 @@ AIBCharacter::AIBCharacter()
 		GetMesh()->SetAnimInstanceClass(WARRIOR_ANIM.Class);
 	}
 
-	//무기 부착하기
-	FName WeaponSocket(TEXT("hand_rSocket"));
+	//캐릭 생성되면서 무기 부착하기
+	/*FName WeaponSocket(TEXT("hand_rSocket"));
 	if (GetMesh()->DoesSocketExist(WeaponSocket))
 	{
 		Weapon = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WEAPON"));
@@ -48,7 +49,7 @@ AIBCharacter::AIBCharacter()
 		}
 
 		Weapon->SetupAttachment(GetMesh(), WeaponSocket);
-	}
+	}*/
 
 	//카메라 모드 전환
 	SetControlMode(EControlMode::GTA);
@@ -82,6 +83,17 @@ void AIBCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	//무기 액터로 부착하기
+	FName WeaponSocket(TEXT("hand_rSocket"));
+	auto CurWeapon = GetWorld()->SpawnActor<AIBWeapon>(FVector::ZeroVector, FRotator::ZeroRotator);
+	if (nullptr != CurWeapon)
+	{
+		CurWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, WeaponSocket);
+	}
+
+
+
+
 }
 
 void AIBCharacter::SetControlMode(EControlMode NewControlMode)

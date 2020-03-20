@@ -641,3 +641,505 @@ LogInit: Object subsystem initialized
 [2020.03.20-07.50.02:505][627]InfinityBlade: Warning: AIBCharacter::PostInitializeComponents::<lambda_a611e0cc7410685bc6425cf5454d808a>::operator ()(157)OnNextAttackCheck
 [2020.03.20-07.50.04:078][703]InfinityBlade: Warning: AIBCharacter::PostInitializeComponents::<lambda_a611e0cc7410685bc6425cf5454d808a>::operator ()(157)OnNextAttackCheck
 [2020.03.20-07.50.07:016][851]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.03.20-07.58.58:897][450]Running C:/Program Files/Epic Games/UE_4.19/Engine/Binaries/DotNET/UnrealBuildTool.exe InfinityBlade Win64 Development -editorrecompile "C:/dev/InfinityBlade/InfinityBlade.uproject" -invalidatemakefilesonly
+[2020.03.20-07.58.59:203][450]Invalidating makefiles only in this run.
+[2020.03.20-07.58.59:356][450]Candidate modules for hot reload:
+[2020.03.20-07.58.59:356][450]  InfinityBlade
+[2020.03.20-07.58.59:356][450]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_4.19/Engine/Binaries/DotNET/UnrealBuildTool.exe InfinityBlade -ModuleWithSuffix=InfinityBlade,5175 Win64 Development -editorrecompile -canskiplink "C:/dev/InfinityBlade/InfinityBlade.uproject" ]
+[2020.03.20-07.59.20:471][450]CompilerResultsLog: New page: 컴파일 - 2020. 3. 21. 오전 1:59:20
+[2020.03.20-07.59.20:472][450]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build.
+[2020.03.20-07.59.20:472][450]CompilerResultsLog: Creating makefile for hot reloading InfinityBlade (no existing makefile)
+[2020.03.20-07.59.20:472][450]CompilerResultsLog: Compiling game modules for hot reload
+[2020.03.20-07.59.20:472][450]CompilerResultsLog: Parsing headers for InfinityBladeEditor
+[2020.03.20-07.59.20:472][450]CompilerResultsLog:   Running UnrealHeaderTool "C:\dev\InfinityBlade\InfinityBlade.uproject" "C:\dev\InfinityBlade\Intermediate\Build\Win64\InfinityBladeEditor\Development\InfinityBladeEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2020.03.20-07.59.20:472][450]CompilerResultsLog: Reflection code generated for InfinityBladeEditor in 10.3308683 seconds
+[2020.03.20-07.59.20:472][450]CompilerResultsLog: Performing 5 actions (4 in parallel)
+[2020.03.20-07.59.20:472][450]CompilerResultsLog: IBWeapon.cpp
+[2020.03.20-07.59.20:472][450]CompilerResultsLog: InfinityBlade.init.gen.cpp
+[2020.03.20-07.59.20:472][450]CompilerResultsLog: IBWeapon.gen.cpp
+[2020.03.20-07.59.20:472][450]CompilerResultsLog: [4/5] Link UE4Editor-InfinityBlade-5175.dll
+[2020.03.20-07.59.20:472][450]CompilerResultsLog: [5/5] Link UE4Editor-InfinityBlade-5175.lib
+[2020.03.20-07.59.20:472][450]CompilerResultsLog:    C:\dev\InfinityBlade\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-InfinityBlade-5175.lib ???̺귯?? ?? C:\dev\InfinityBlade\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-InfinityBlade-5175.exp ??ü?? ?????ϰ? ?ֽ??ϴ?.
+[2020.03.20-07.59.20:472][450]CompilerResultsLog:    C:\dev\InfinityBlade\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-InfinityBlade-5175.suppressed.lib ???̺귯?? ?? C:\dev\InfinityBlade\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-InfinityBlade-5175.suppressed.exp ??ü?? ?????ϰ? ?ֽ??ϴ?.
+[2020.03.20-07.59.20:472][450]CompilerResultsLog: Total build time: 20.81 seconds (Local executor: 2.23 seconds)
+[2020.03.20-07.59.20:472][450]LogMainFrame: MainFrame: Module compiling took 21.150 seconds
+[2020.03.20-07.59.20:520][450]LogClass: Could not find existing class IBWeapon in package /Script/InfinityBlade for HotReload, assuming new class
+[2020.03.20-07.59.20:526][450]LogHotReload: Re-instancing IBCharacter after hot-reload.
+[2020.03.20-07.59.20:872][450]LogHotReload: Re-instancing IBPawn after hot-reload.
+[2020.03.20-07.59.20:979][450]LogContentBrowser: Native class hierarchy updated for 'InfinityBlade' in 0.0047 seconds. Added 6 classes and 3 folders.
+[2020.03.20-07.59.20:982][450]Display: HotReload successful (3 functions remapped  0 scriptstructs remapped)
+[2020.03.20-07.59.21:341][450]LogContentBrowser: Native class hierarchy populated in 0.0136 seconds. Added 2460 classes and 565 folders.
+[2020.03.20-07.59.21:341][450]Display: HotReload took 22.0s.
+[2020.03.20-07.59.21:348][450]Warning: HotReload operation took 22.0s.
+[2020.03.20-07.59.21:762][450]LogSlate: Window 'C++ 클래스 추가' being destroyed
+[2020.03.20-07.59.21:775][450]LogHotReload: New module detected: UE4Editor-InfinityBlade-5175.dll
+[2020.03.20-07.59.21:864][451]LogHotReload: Starting Hot-Reload from IDE
+[2020.03.20-07.59.22:061][451]LogContentBrowser: Native class hierarchy updated for 'InfinityBlade' in 0.0065 seconds. Added 6 classes and 3 folders.
+[2020.03.20-07.59.22:064][451]Display: HotReload successful (0 functions remapped  0 scriptstructs remapped)
+[2020.03.20-07.59.22:402][451]LogContentBrowser: Native class hierarchy populated in 0.0146 seconds. Added 2460 classes and 565 folders.
+[2020.03.20-07.59.22:441][451]Display: HotReload took  0.6s.
+[2020.03.20-08.07.23:281][369]LogHotReload: New module detected: UE4Editor-InfinityBlade-1696.dll
+[2020.03.20-08.07.24:295][373]LogHotReload: Starting Hot-Reload from IDE
+[2020.03.20-08.07.24:414][373]LogHotReload: Re-instancing IBCharacter after hot-reload.
+[2020.03.20-08.07.24:806][373]LogHotReload: Re-instancing IBPawn after hot-reload.
+[2020.03.20-08.07.24:978][373]LogHotReload: Re-instancing IBWeapon after hot-reload.
+[2020.03.20-08.07.25:067][373]LogContentBrowser: Native class hierarchy updated for 'InfinityBlade' in 0.0051 seconds. Added 6 classes and 3 folders.
+[2020.03.20-08.07.25:069][373]Display: HotReload successful (3 functions remapped  0 scriptstructs remapped)
+[2020.03.20-08.07.25:402][373]LogContentBrowser: Native class hierarchy populated in 0.0143 seconds. Added 2460 classes and 565 folders.
+[2020.03.20-08.07.25:436][373]Display: HotReload took  1.1s.
+[2020.03.20-08.08.00:452][478]LogHotReload: New module detected: UE4Editor-InfinityBlade-2910.dll
+[2020.03.20-08.08.01:801][483]LogHotReload: Starting Hot-Reload from IDE
+[2020.03.20-08.08.01:928][483]LogClass: Could not find existing class IBWeapon in package /Script/InfinityBlade for HotReload, assuming new class
+[2020.03.20-08.08.01:933][483]LogHotReload: Re-instancing IBCharacter after hot-reload.
+[2020.03.20-08.08.02:365][483]LogHotReload: Re-instancing IBPawn after hot-reload.
+[2020.03.20-08.08.02:573][483]LogHotReload: Re-instancing IBWeapon after hot-reload.
+[2020.03.20-08.08.02:683][483]LogContentBrowser: Native class hierarchy updated for 'InfinityBlade' in 0.0054 seconds. Added 6 classes and 3 folders.
+[2020.03.20-08.08.02:686][483]Display: HotReload successful (3 functions remapped  0 scriptstructs remapped)
+[2020.03.20-08.08.03:066][483]LogContentBrowser: Native class hierarchy populated in 0.0154 seconds. Added 2460 classes and 565 folders.
+[2020.03.20-08.08.03:101][483]Display: HotReload took  1.3s.
+[2020.03.20-08.08.13:447][514]LogHotReload: New module detected: UE4Editor-InfinityBlade-5066.dll
+[2020.03.20-08.08.14:463][518]LogHotReload: Starting Hot-Reload from IDE
+[2020.03.20-08.08.14:587][518]LogHotReload: Re-instancing IBCharacter after hot-reload.
+[2020.03.20-08.08.14:902][518]LogHotReload: Re-instancing IBPawn after hot-reload.
+[2020.03.20-08.08.15:049][518]LogHotReload: Re-instancing IBWeapon after hot-reload.
+[2020.03.20-08.08.15:130][518]LogContentBrowser: Native class hierarchy updated for 'InfinityBlade' in 0.0041 seconds. Added 6 classes and 3 folders.
+[2020.03.20-08.08.15:133][518]Display: HotReload successful (3 functions remapped  0 scriptstructs remapped)
+[2020.03.20-08.08.15:443][518]LogContentBrowser: Native class hierarchy populated in 0.0129 seconds. Added 2460 classes and 565 folders.
+[2020.03.20-08.08.15:477][518]Display: HotReload took  1.0s.
+[2020.03.20-08.08.21:926][596]LogEditor: Attempting to add actor of class 'IBWeapon' to level at 50.00,210.00,20.00
+[2020.03.20-08.08.22:219][601]LogEditor: Attempting to add actor of class 'IBWeapon' to level at -320.00,-310.00,20.00
+[2020.03.20-08.08.34:539][231]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2020.03.20-08.08.39:990][531]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.03.20-08.08.43:022][667]Cmd: SELECT NONE
+[2020.03.20-08.08.46:561][834]LogEditorViewport: Clicking on Actor (LMB): IBWeapon (IBWeapon1)
+[2020.03.20-08.08.50:837][ 51]Cmd: SELECT NONE
+[2020.03.20-08.09.33:381][218]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/dev/Maps/StratRoom" FILE="../../../../../../dev/InfinityBlade/Saved/Autosaves/Game/dev/Maps/StratRoom_Auto1.umap" SILENT=true AUTOSAVING=true KEEPDIRTY=false
+[2020.03.20-08.09.33:443][218]LogSavePackage: Save=45.09ms
+[2020.03.20-08.09.33:443][218]LogSavePackage: Moving '../../../../../../dev/InfinityBlade/Saved/StratRoom_Auto187785BF24656E38B547F2384857E445F.tmp' to '../../../../../../dev/InfinityBlade/Saved/Autosaves/Game/dev/Maps/StratRoom_Auto1.umap'
+[2020.03.20-08.09.33:444][218]LogSavePackage: Display: Finished SavePackage ../../../../../../dev/InfinityBlade/Saved/Autosaves/Game/dev/Maps/StratRoom_Auto1.umap
+[2020.03.20-08.09.33:447][218]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/dev/Maps/StratRoom' took 0.132
+[2020.03.20-08.09.33:447][218]LogFileHelpers: Editor autosave (incl. sublevels) for all levels took 0.132
+[2020.03.20-08.21.57:261][636]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.03.20-08.22.07:014][180]LogEditorViewport: Clicking on Actor (LMB): IBWeapon (IBWeapon1)
+[2020.03.20-08.22.09:016][292]Cmd: DELETE
+[2020.03.20-08.22.09:016][292]Cmd: ACTOR DELETE
+[2020.03.20-08.22.09:026][292]LogEditorActor: Deleted Actor: IBWeapon
+[2020.03.20-08.22.09:050][292]LogEditorActor: Deleted 1 Actors (0.030 secs)
+[2020.03.20-08.22.12:529][430]LogEditorViewport: Clicking on Actor (LMB): IBCharacter (IBCharacter1)
+[2020.03.20-08.22.13:435][454]Cmd: DELETE
+[2020.03.20-08.22.13:435][454]Cmd: ACTOR DELETE
+[2020.03.20-08.22.13:437][454]LogEditorActor: Deleted Actor: IBCharacter
+[2020.03.20-08.22.13:500][454]LogEditorActor: Deleted 1 Actors (0.064 secs)
+[2020.03.20-08.22.13:871][475]LogEditorViewport: Clicking on Actor (LMB): IBCharacter (IBCharacter3)
+[2020.03.20-08.22.14:520][496]Cmd: DELETE
+[2020.03.20-08.22.14:520][496]Cmd: ACTOR DELETE
+[2020.03.20-08.22.14:521][496]LogEditorActor: Deleted Actor: IBCharacter
+[2020.03.20-08.22.14:572][496]LogEditorActor: Deleted 1 Actors (0.052 secs)
+[2020.03.20-08.22.42:907][146]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.03.20-08.22.57:988][994]LogContentBrowser: Native class hierarchy updated for 'TextureEditor' in 0.0040 seconds. Added 1 classes and 2 folders.
+[2020.03.20-08.23.06:983][484]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.03.20-08.24.19:052][539]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/dev/Maps/StratRoom" FILE="../../../../../../dev/InfinityBlade/Saved/Autosaves/Game/dev/Maps/StratRoom_Auto2.umap" SILENT=true AUTOSAVING=true KEEPDIRTY=false
+[2020.03.20-08.24.19:087][539]LogSavePackage: Save=25.17ms
+[2020.03.20-08.24.19:087][539]LogSavePackage: Moving '../../../../../../dev/InfinityBlade/Saved/StratRoom_Auto21CAD829A4DC669E6D10744A0F684B66C.tmp' to '../../../../../../dev/InfinityBlade/Saved/Autosaves/Game/dev/Maps/StratRoom_Auto2.umap'
+[2020.03.20-08.24.19:089][539]LogSavePackage: Display: Finished SavePackage ../../../../../../dev/InfinityBlade/Saved/Autosaves/Game/dev/Maps/StratRoom_Auto2.umap
+[2020.03.20-08.24.19:090][539]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/dev/Maps/StratRoom' took 0.062
+[2020.03.20-08.24.19:091][539]LogFileHelpers: Editor autosave (incl. sublevels) for all levels took 0.062
+[2020.03.20-08.25.57:709][558]LogEditorViewport: Clicking on Actor (LMB): StaticMeshActor (SM_SQUARE)
+[2020.03.20-08.26.30:938][498]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.03.20-08.26.31:217][510]LogActorComponent: RegisterComponentWithWorld: (/Engine/Transient.World_25:PersistentLevel.Actor_13.DebugSkelMeshComponent_16) Already registered. Aborting.
+[2020.03.20-08.26.39:763][907]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.03.20-08.26.59:579][913]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.03.20-08.27.39:281][216]LogRenderer: Reallocating scene render targets to support 1432x924 Format 9 NumSamples 1 (Frame:1).
+[2020.03.20-08.28.00:320][ 87]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.03.20-08.28.36:531][912]LogContentBrowser: Native class hierarchy updated for 'Cascade' in 0.0131 seconds. Added 2 classes and 2 folders.
+[2020.03.20-08.28.55:305][202]LogCascade: Quitting Cascade. FXSystem=0x000001CCDDAEA7A0
+[2020.03.20-08.29.13:358][820]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.03.20-08.29.57:876][ 50]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.03.20-08.29.58:231][ 69]LogEditorActor: Deleted Actor: SkeletalMeshActor
+[2020.03.20-08.29.58:260][ 69]LogEditorActor: Deleted 1 Actors (0.030 secs)
+[2020.03.20-08.30.10:387][656]LogEditorViewport: Clicking on Actor (LMB): SkeletalMeshActor (SK_Blade_HeroSword17)
+[2020.03.20-08.30.17:406][997]LogEditorViewport: Clicking on Actor (LMB): SkeletalMeshActor (SK_Blade_HeroSword22)
+[2020.03.20-08.30.53:480][948]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2020.03.20-08.30.55:173][ 20]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2020.03.20-08.31.16:613][255]Running C:/Program Files/Epic Games/UE_4.19/Engine/Binaries/DotNET/UnrealBuildTool.exe InfinityBlade Win64 Development -editorrecompile "C:/dev/InfinityBlade/InfinityBlade.uproject" -invalidatemakefilesonly
+[2020.03.20-08.31.17:018][255]Invalidating makefiles only in this run.
+[2020.03.20-08.31.17:179][255]Candidate modules for hot reload:
+[2020.03.20-08.31.17:179][255]  InfinityBlade
+[2020.03.20-08.31.17:179][255]Launching UnrealBuildTool... [C:/Program Files/Epic Games/UE_4.19/Engine/Binaries/DotNET/UnrealBuildTool.exe InfinityBlade -ModuleWithSuffix=InfinityBlade,4033 Win64 Development -editorrecompile -canskiplink "C:/dev/InfinityBlade/InfinityBlade.uproject" ]
+[2020.03.20-08.31.41:134][255]CompilerResultsLog: New page: 컴파일 - 2020. 3. 21. 오전 2:31:41
+[2020.03.20-08.31.41:134][255]CompilerResultsLog: Using 'git status' to determine working set for adaptive non-unity build.
+[2020.03.20-08.31.41:134][255]CompilerResultsLog: Creating makefile for hot reloading InfinityBlade (no existing makefile)
+[2020.03.20-08.31.41:134][255]CompilerResultsLog: Compiling game modules for hot reload
+[2020.03.20-08.31.41:134][255]CompilerResultsLog: Parsing headers for InfinityBladeEditor
+[2020.03.20-08.31.41:134][255]CompilerResultsLog:   Running UnrealHeaderTool "C:\dev\InfinityBlade\InfinityBlade.uproject" "C:\dev\InfinityBlade\Intermediate\Build\Win64\InfinityBladeEditor\Development\InfinityBladeEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+[2020.03.20-08.31.41:134][255]CompilerResultsLog: Reflection code generated for InfinityBladeEditor in 10.26679 seconds
+[2020.03.20-08.31.41:134][255]CompilerResultsLog: Performing 6 actions (4 in parallel)
+[2020.03.20-08.31.41:134][255]CompilerResultsLog: InfinityBlade.init.gen.cpp
+[2020.03.20-08.31.41:134][255]CompilerResultsLog: IBItemWeapon.cpp
+[2020.03.20-08.31.41:134][255]CompilerResultsLog: IBItemWeapon.gen.cpp
+[2020.03.20-08.31.41:134][255]CompilerResultsLog: IBCharacter.cpp
+[2020.03.20-08.31.41:134][255]CompilerResultsLog: [5/6] Link UE4Editor-InfinityBlade-4033.dll
+[2020.03.20-08.31.41:134][255]CompilerResultsLog: [6/6] Link UE4Editor-InfinityBlade-4033.lib
+[2020.03.20-08.31.41:134][255]CompilerResultsLog:    C:\dev\InfinityBlade\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-InfinityBlade-4033.lib ???̺귯?? ?? C:\dev\InfinityBlade\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-InfinityBlade-4033.exp ??ü?? ?????ϰ? ?ֽ??ϴ?.
+[2020.03.20-08.31.41:134][255]CompilerResultsLog:    C:\dev\InfinityBlade\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-InfinityBlade-4033.suppressed.lib ???̺귯?? ?? C:\dev\InfinityBlade\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-InfinityBlade-4033.suppressed.exp ??ü?? ?????ϰ? ?ֽ??ϴ?.
+[2020.03.20-08.31.41:134][255]CompilerResultsLog: Total build time: 23.68 seconds (Local executor: 5.65 seconds)
+[2020.03.20-08.31.41:134][255]LogMainFrame: MainFrame: Module compiling took 23.990 seconds
+[2020.03.20-08.31.41:168][255]LogClass: Could not find existing class IBItemWeapon in package /Script/InfinityBlade for HotReload, assuming new class
+[2020.03.20-08.31.41:176][255]LogHotReload: Re-instancing IBCharacter after hot-reload.
+[2020.03.20-08.31.41:376][255]LogHotReload: Re-instancing IBPawn after hot-reload.
+[2020.03.20-08.31.41:554][255]LogContentBrowser: Native class hierarchy updated for 'InfinityBlade' in 0.0041 seconds. Added 7 classes and 3 folders.
+[2020.03.20-08.31.41:556][255]Display: HotReload successful (3 functions remapped  0 scriptstructs remapped)
+[2020.03.20-08.31.41:887][255]LogContentBrowser: Native class hierarchy populated in 0.0135 seconds. Added 2464 classes and 569 folders.
+[2020.03.20-08.31.41:887][255]Display: HotReload took 24.7s.
+[2020.03.20-08.31.41:892][255]Warning: HotReload operation took 24.8s.
+[2020.03.20-08.31.42:096][255]LogVSAccessor: Warning: Couldn't goto line number '1' in 'C:/dev/InfinityBlade/Source/InfinityBlade/Public/IBItemWeapon.h'
+[2020.03.20-08.31.42:099][255]LogVSAccessor: Warning: Couldn't open file 'C:/dev/InfinityBlade/Source/InfinityBlade/Private/IBItemWeapon.cpp'.
+[2020.03.20-08.31.42:125][255]LogSlate: Window 'C++ 클래스 추가' being destroyed
+[2020.03.20-08.31.42:141][255]LogHotReload: New module detected: UE4Editor-InfinityBlade-4033.dll
+[2020.03.20-08.31.42:200][255]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2020.03.20-08.31.42:235][256]LogHotReload: Starting Hot-Reload from IDE
+[2020.03.20-08.31.42:478][256]LogContentBrowser: Native class hierarchy updated for 'InfinityBlade' in 0.0070 seconds. Added 7 classes and 3 folders.
+[2020.03.20-08.31.42:481][256]Display: HotReload successful (0 functions remapped  0 scriptstructs remapped)
+[2020.03.20-08.31.42:834][256]LogContentBrowser: Native class hierarchy populated in 0.0208 seconds. Added 2464 classes and 569 folders.
+[2020.03.20-08.31.42:872][256]Display: HotReload took  0.6s.
+[2020.03.20-08.34.46:169][923]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/dev/Maps/StratRoom" FILE="../../../../../../dev/InfinityBlade/Saved/Autosaves/Game/dev/Maps/StratRoom_Auto3.umap" SILENT=true AUTOSAVING=true KEEPDIRTY=false
+[2020.03.20-08.34.46:214][923]LogSavePackage: Save=32.30ms
+[2020.03.20-08.34.46:214][923]LogSavePackage: Moving '../../../../../../dev/InfinityBlade/Saved/StratRoom_Auto38A63B23E470B3A837E97818FEE92C71C.tmp' to '../../../../../../dev/InfinityBlade/Saved/Autosaves/Game/dev/Maps/StratRoom_Auto3.umap'
+[2020.03.20-08.34.46:215][923]LogSavePackage: Display: Finished SavePackage ../../../../../../dev/InfinityBlade/Saved/Autosaves/Game/dev/Maps/StratRoom_Auto3.umap
+[2020.03.20-08.34.46:217][923]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/dev/Maps/StratRoom' took 0.106
+[2020.03.20-08.34.46:217][923]LogFileHelpers: Editor autosave (incl. sublevels) for all levels took 0.106
+[2020.03.20-08.40.14:571][ 21]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2020.03.20-08.40.14:690][ 21]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/dev/Maps/StratRoom" FILE="../../../../../../dev/InfinityBlade/Content/dev/Maps/StratRoom.umap" SILENT=true AUTOSAVING=false KEEPDIRTY=false
+[2020.03.20-08.40.14:740][ 21]LogSavePackage: Save=22.21ms
+[2020.03.20-08.40.14:740][ 21]LogSavePackage: Moving '../../../../../../dev/InfinityBlade/Saved/StratRoomE7D16D3F467F440D81032FAAACF82201.tmp' to '../../../../../../dev/InfinityBlade/Content/dev/Maps/StratRoom.umap'
+[2020.03.20-08.40.14:742][ 21]LogSavePackage: Display: Finished SavePackage ../../../../../../dev/InfinityBlade/Content/dev/Maps/StratRoom.umap
+[2020.03.20-08.40.14:766][ 21]LogFileHelpers: Saving map 'StratRoom' took 0.180
+[2020.03.20-08.40.15:637][ 70]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2020.03.20-08.40.16:208][ 77]LogSlate: Window 'InfinityBlade - 언리얼 에디터' being destroyed
+[2020.03.20-08.40.16:463][ 78]Cmd: QUIT_EDITOR
+[2020.03.20-08.40.17:404][ 78]LogWindowsTextInputMethodSystem: Display: IME system now activated using TSF (Microsoft 입력기).
+[2020.03.20-08.40.17:418][ 78]LogSlate: Slate User Destroyed.  User Index 0, Is Virtual User: 0
+[2020.03.20-08.40.17:418][ 78]LogExit: Preparing to exit.
+[2020.03.20-08.40.17:617][ 78]LogDirectoryWatcher: A directory notification for 'C:/dev/InfinityBlade/Content/' was aborted.
+[2020.03.20-08.40.17:698][ 78]LogExit: Editor shut down
+[2020.03.20-08.40.17:724][ 78]LogExit: Transaction tracking system shut down
+[2020.03.20-08.40.17:783][ 78]LogUObjectGlobals: Destroyed PersistentFrame Addr=0x000001cc74d4a580, Size=4
+[2020.03.20-08.40.17:783][ 78]LogUObjectGlobals: Destroyed PersistentFrame Addr=0x000001cc74d4a548, Size=4
+[2020.03.20-08.40.17:786][ 78]LogUObjectGlobals: Destroyed PersistentFrame Addr=0x000001ccb6043118, Size=24
+[2020.03.20-08.40.18:053][ 78]LogDirectoryWatcher: A directory notification for '../../../Engine/Content/' was aborted.
+[2020.03.20-08.40.18:053][ 78]LogDirectoryWatcher: A directory notification for '../../../../../../dev/InfinityBlade/Content/' was aborted.
+[2020.03.20-08.40.18:053][ 78]LogDirectoryWatcher: A directory notification for '../../Plugins/2D/Paper2D/Content/' was aborted.
+[2020.03.20-08.40.18:053][ 78]LogDirectoryWatcher: A directory notification for '../../Plugins/Enterprise/DatasmithContent/Content/' was aborted.
+[2020.03.20-08.40.18:053][ 78]LogDirectoryWatcher: A directory notification for '../../Plugins/Media/MediaCompositing/Content/' was aborted.
+[2020.03.20-08.40.18:053][ 78]LogDirectoryWatcher: A directory notification for '../../Plugins/Runtime/AppleARKit/Content/' was aborted.
+[2020.03.20-08.40.18:053][ 78]LogDirectoryWatcher: A directory notification for '../../Plugins/Runtime/Oculus/OculusVR/Content/' was aborted.
+[2020.03.20-08.40.18:053][ 78]LogDirectoryWatcher: A directory notification for '../../Plugins/Runtime/Steam/SteamVR/Content/' was aborted.
+[2020.03.20-08.40.18:210][ 78]LogExit: Object subsystem successfully closed.
+[2020.03.20-08.40.18:230][ 78]LogShaderCompilers: Display: Shaders left to compile 0
+[2020.03.20-08.40.18:236][ 78]LogD3D11RHI: Shutdown
+[2020.03.20-08.40.18:236][ 78]LogD3D11RHI: CleanupD3DDevice
+[2020.03.20-08.40.18:240][ 78]LogD3D11RHI: ~FD3D11DynamicRHI
+[2020.03.20-08.40.18:268][ 78]LogModuleManager: Shutting down and abandoning module InfinityBlade (607)
+[2020.03.20-08.40.18:268][ 78]LogModuleManager: Shutting down and abandoning module DistCurveEditor (605)
+[2020.03.20-08.40.18:268][ 78]LogModuleManager: Shutting down and abandoning module Cascade (603)
+[2020.03.20-08.40.18:268][ 78]LogModuleManager: Shutting down and abandoning module StaticMeshEditor (601)
+[2020.03.20-08.40.18:268][ 78]LogModuleManager: Shutting down and abandoning module TextureEditor (599)
+[2020.03.20-08.40.18:268][ 78]LogModuleManager: Shutting down and abandoning module MovieSceneCapture (590)
+[2020.03.20-08.40.18:270][ 78]LogModuleManager: Shutting down and abandoning module ClothingSystemEditorInterface (588)
+[2020.03.20-08.40.18:270][ 78]LogModuleManager: Shutting down and abandoning module BlueprintGraph (586)
+[2020.03.20-08.40.18:270][ 78]LogModuleManager: Shutting down and abandoning module AnimationBlueprintEditor (584)
+[2020.03.20-08.40.18:270][ 78]LogModuleManager: Shutting down and abandoning module PinnedCommandList (582)
+[2020.03.20-08.40.18:270][ 78]LogModuleManager: Shutting down and abandoning module SkeletonEditor (580)
+[2020.03.20-08.40.18:270][ 78]LogModuleManager: Shutting down and abandoning module AnimationEditor (578)
+[2020.03.20-08.40.18:270][ 78]LogModuleManager: Shutting down and abandoning module HierarchicalLODOutliner (576)
+[2020.03.20-08.40.18:270][ 78]LogModuleManager: Shutting down and abandoning module DesktopPlatform (574)
+[2020.03.20-08.40.18:270][ 78]LogModuleManager: Shutting down and abandoning module SceneOutliner (572)
+[2020.03.20-08.40.18:270][ 78]LogModuleManager: Shutting down and abandoning module AddContentDialog (570)
+[2020.03.20-08.40.18:271][ 78]LogDirectoryWatcher: A directory notification for 'C:/Program Files/Epic Games/UE_4.19/FeaturePacks/' was aborted.
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module WidgetCarousel (569)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module EditorWidgets (566)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module CollectionManager (564)
+[2020.03.20-08.40.18:276][ 78]LogDirectoryWatcher: A directory notification for 'C:/dev/InfinityBlade/Content/Collections/' was aborted.
+[2020.03.20-08.40.18:276][ 78]LogDirectoryWatcher: A directory notification for 'C:/dev/InfinityBlade/Content/Developers/pth08/Collections/' was aborted.
+[2020.03.20-08.40.18:276][ 78]LogDirectoryWatcher: A directory notification for 'C:/dev/InfinityBlade/Saved/Collections/' was aborted.
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module StatsViewer (562)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module FoliageEdit (560)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module LandscapeEditor (558)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module MeshPaintMode (556)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module SceneDepthPickerMode (554)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module ActorPickerMode (552)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module GeometryMode (550)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module TextureAlignMode (548)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module BspMode (546)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module PIEPreviewDeviceProfileSelector (544)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module HardwareSurvey (542)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module SequenceRecorderSections (540)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module AutomationWorker (538)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module AudioCaptureEditor (536)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module SequenceRecorder (535)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module MatineeToLevelSequence (532)
+[2020.03.20-08.40.18:276][ 78]LogModuleManager: Shutting down and abandoning module LevelSequenceEditor (530)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module PlacementMode (529)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module MaterialEditor (528)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module WmfMediaFactory (524)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module WmfMediaEditor (522)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module MediaPlayerEditor (520)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module OpenExrWrapper (518)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module ImgMediaFactory (516)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module ImgMediaEditor (514)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module AvfMediaFactory (512)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module AvfMediaEditor (510)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module AndroidMediaFactory (508)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module AndroidMediaEditor (506)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module CharacterAI (504)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module SmartSnapping (502)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module SessionServices (500)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module ViewportSnapping (498)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module ViewportInteraction (496)
+[2020.03.20-08.40.18:277][ 78]LogModuleManager: Shutting down and abandoning module ClothPainter (494)
+[2020.03.20-08.40.18:278][ 78]LogModuleManager: Shutting down and abandoning module SkeletalMeshEditor (493)
+[2020.03.20-08.40.18:278][ 78]LogModuleManager: Shutting down and abandoning module LogVisualizer (490)
+[2020.03.20-08.40.18:278][ 78]LogModuleManager: Shutting down and abandoning module IntroTutorials (488)
+[2020.03.20-08.40.18:279][ 78]LogModuleManager: Shutting down and abandoning module GameProjectGeneration (487)
+[2020.03.20-08.40.18:279][ 78]LogModuleManager: Shutting down and abandoning module IOSPlatformEditor (484)
+[2020.03.20-08.40.18:279][ 78]LogModuleManager: Shutting down and abandoning module HTML5PlatformEditor (482)
+[2020.03.20-08.40.18:279][ 78]LogModuleManager: Shutting down and abandoning module AndroidPlatformEditor (480)
+[2020.03.20-08.40.18:279][ 78]LogModuleManager: Shutting down and abandoning module AndroidDeviceDetection (479)
+[2020.03.20-08.40.18:773][ 78]LogModuleManager: Shutting down and abandoning module WindowsPlatformEditor (476)
+[2020.03.20-08.40.18:773][ 78]LogModuleManager: Shutting down and abandoning module IOSRuntimeSettings (474)
+[2020.03.20-08.40.18:773][ 78]LogModuleManager: Shutting down and abandoning module AndroidRuntimeSettings (472)
+[2020.03.20-08.40.18:773][ 78]LogModuleManager: Shutting down and abandoning module InputBindingEditor (470)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module MergeActors (468)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module LocalizationDashboard (466)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module LocalizationService (465)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module HardwareTargeting (462)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module DeviceProfileEditor (460)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module UndoHistory (458)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module XmlParser (456)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module Blutility (454)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module ProjectSettingsViewer (452)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module ProjectTargetPlatformEditor (451)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module EditorSettingsViewer (448)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module SettingsEditor (446)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module ProjectLauncher (444)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module SessionFrontend (442)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module ProfilerClient (440)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module DeviceManager (438)
+[2020.03.20-08.40.18:774][ 78]LogModuleManager: Shutting down and abandoning module TargetDeviceServices (437)
+[2020.03.20-08.40.18:829][ 78]LogModuleManager: Shutting down and abandoning module AutomationController (434)
+[2020.03.20-08.40.18:829][ 78]LogModuleManager: Shutting down and abandoning module AutomationWindow (432)
+[2020.03.20-08.40.18:829][ 78]LogModuleManager: Shutting down and abandoning module Layers (430)
+[2020.03.20-08.40.18:829][ 78]LogModuleManager: Shutting down and abandoning module ComponentVisualizers (428)
+[2020.03.20-08.40.18:829][ 78]LogModuleManager: Shutting down and abandoning module DetailCustomizations (426)
+[2020.03.20-08.40.18:829][ 78]LogModuleManager: Shutting down and abandoning module PackagesDialog (424)
+[2020.03.20-08.40.18:829][ 78]LogModuleManager: Shutting down and abandoning module Persona (422)
+[2020.03.20-08.40.18:829][ 78]LogModuleManager: Shutting down and abandoning module AdvancedPreviewScene (421)
+[2020.03.20-08.40.18:829][ 78]LogModuleManager: Shutting down and abandoning module AnimGraph (419)
+[2020.03.20-08.40.18:829][ 78]LogModuleManager: Shutting down and abandoning module Kismet (416)
+[2020.03.20-08.40.18:839][ 78]LogModuleManager: Shutting down and abandoning module GraphEditor (414)
+[2020.03.20-08.40.18:839][ 78]LogModuleManager: Shutting down and abandoning module ClassViewer (412)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module Toolbox (410)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module ModuleUI (408)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module MovieSceneTools (406)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module OutputLog (404)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module GammaUI (402)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module Documentation (400)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module MovieSceneTracks (398)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module MovieScene (396)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module StreamingPauseRendering (394)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module LauncherPlatform (392)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module AnalyticsET (390)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module PortalServices (388)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module PortalRpc (386)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module MessagingRpc (384)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module AIModule (382)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module GameplayDebugger (381)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module AITestSuite (379)
+[2020.03.20-08.40.18:840][ 78]LogModuleManager: Shutting down and abandoning module ProfilerService (376)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module TaskGraph (374)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module SteamVRController (372)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module ProceduralMeshComponentEditor (370)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module ProceduralMeshComponent (368)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module OculusInput (366)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module MobilePatchingUtils (364)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module CustomMeshComponent (362)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module CableComponent (360)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module AudioCapture (358)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module ArchVisCharacter (356)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module AndroidPermission (354)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module NUTUnrealEngine4 (350)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module NetcodeUnitTest (348)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module MediaCompositingEditor (346)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module MediaCompositing (344)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module LinearTimecode (342)
+[2020.03.20-08.40.18:863][ 78]LogModuleManager: Shutting down and abandoning module ImgMedia (340)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module HTML5Networking (338)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module AlembicImporter (336)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module AlembicLibrary (335)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module GeometryCache (334)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module GeometryCacheEd (333)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module DatasmithContent (328)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module SpeedTreeImporter (326)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module PluginBrowser (324)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module MobileLauncherProfileWizard (322)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module CryptoKeysOpenSSL (320)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module CryptoKeys (318)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module VisualStudioSourceCodeAccess (316)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module VisualStudioCodeSourceCodeAccess (314)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module UObjectPlugin (312)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module SubversionSourceControl (310)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module PerforceSourceControl (308)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module GitSourceControl (306)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module SourceControl (305)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module CLionSourceCodeAccess (302)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module LightPropagationVolumeEditor (300)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module PaperTiledImporter (298)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module PaperSpriteSheetImporter (296)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module Paper2DEditor (294)
+[2020.03.20-08.40.18:866][ 78]LogModuleManager: Shutting down and abandoning module MeshPaint (293)
+[2020.03.20-08.40.18:867][ 78]LogModuleManager: Shutting down and abandoning module RuntimePhysXCooking (288)
+[2020.03.20-08.40.18:867][ 78]LogModuleManager: Shutting down and abandoning module PhysXVehiclesEditor (286)
+[2020.03.20-08.40.18:867][ 78]LogModuleManager: Shutting down and abandoning module PhysXVehicles (284)
+[2020.03.20-08.40.18:867][ 78]LogModuleManager: Shutting down and abandoning module OculusEditor (282)
+[2020.03.20-08.40.18:867][ 78]LogModuleManager: Shutting down and abandoning module LocationServicesBPLibrary (280)
+[2020.03.20-08.40.18:867][ 78]LogModuleManager: Shutting down and abandoning module ImmediatePhysicsEditor (278)
+[2020.03.20-08.40.18:867][ 78]LogModuleManager: Shutting down and abandoning module ImmediatePhysics (276)
+[2020.03.20-08.40.18:867][ 78]LogModuleManager: Shutting down and abandoning module ActorSequence (274)
+[2020.03.20-08.40.18:867][ 78]LogModuleManager: Shutting down and abandoning module UdpMessaging (272)
+[2020.03.20-08.40.18:968][ 78]LogModuleManager: Shutting down and abandoning module TcpMessaging (270)
+[2020.03.20-08.40.19:069][ 78]LogModuleManager: Shutting down and abandoning module GameplayTagsEditor (268)
+[2020.03.20-08.40.19:069][ 78]LogModuleManager: Shutting down and abandoning module FacialAnimationEditor (266)
+[2020.03.20-08.40.19:069][ 78]LogModuleManager: Shutting down and abandoning module FacialAnimation (264)
+[2020.03.20-08.40.19:069][ 78]LogModuleManager: Shutting down and abandoning module DataValidation (262)
+[2020.03.20-08.40.19:069][ 78]LogModuleManager: Shutting down and abandoning module AssetManagerEditor (260)
+[2020.03.20-08.40.19:069][ 78]LogModuleManager: Shutting down and abandoning module LevelEditor (259)
+[2020.03.20-08.40.19:070][ 78]LogModuleManager: Shutting down and abandoning module PixelInspectorModule (258)
+[2020.03.20-08.40.19:070][ 78]LogModuleManager: Shutting down and abandoning module CommonMenuExtensions (256)
+[2020.03.20-08.40.19:071][ 78]LogModuleManager: Shutting down and abandoning module MainFrame (254)
+[2020.03.20-08.40.19:071][ 78]LogModuleManager: Shutting down and abandoning module HotReload (253)
+[2020.03.20-08.40.19:071][ 78]LogDirectoryWatcher: A directory notification for 'C:/dev/InfinityBlade/Binaries/Win64' was aborted.
+[2020.03.20-08.40.19:071][ 78]LogModuleManager: Shutting down and abandoning module ContentBrowser (249)
+[2020.03.20-08.40.19:073][ 78]LogModuleManager: Shutting down and abandoning module TreeMap (247)
+[2020.03.20-08.40.19:073][ 78]LogModuleManager: Shutting down and abandoning module LightPropagationVolumeRuntime (244)
+[2020.03.20-08.40.19:073][ 78]LogModuleManager: Shutting down and abandoning module LiveLinkEditor (242)
+[2020.03.20-08.40.19:073][ 78]LogModuleManager: Shutting down and abandoning module LiveLink (240)
+[2020.03.20-08.40.19:487][ 78]LogModuleManager: Shutting down and abandoning module Paper2D (238)
+[2020.03.20-08.40.19:487][ 78]LogModuleManager: Shutting down and abandoning module WindowsMoviePlayer (236)
+[2020.03.20-08.40.19:487][ 78]LogModuleManager: Shutting down and abandoning module WmfMedia (234)
+[2020.03.20-08.40.19:488][ 78]LogModuleManager: Shutting down and abandoning module Media (233)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module PacketHandler (230)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module ClothingSystemEditor (228)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module ClothingSystemRuntime (226)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module MediaAssets (224)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module Overlay (222)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module OverlayEditor (221)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module VREditor (218)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module StringTableEditor (216)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module GameplayTasksEditor (214)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module BehaviorTreeEditor (212)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module FunctionalTesting (210)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module CollisionAnalyzer (208)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module WorkspaceMenuStructure (207)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module UMG (204)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module UMGEditor (203)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module Sequencer (202)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module MessageLog (199)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module SlateReflector (194)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module Slate (192)
+[2020.03.20-08.40.19:496][ 78]LogModuleManager: Shutting down and abandoning module EditorStyle (190)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module MRMesh (188)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module SourceCodeAccess (186)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module HeadMountedDisplay (184)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module XAudio2 (182)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module Networking (180)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module Core (178)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module LevelSequence (176)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module KismetCompiler (174)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module MeshUtilities (172)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module MeshMergeUtilities (171)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module MeshReductionInterface (170)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module SimplygonSwarm (169)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module SimplygonMeshReduction (167)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module QuadricMeshReduction (165)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module MaterialBaking (161)
+[2020.03.20-08.40.19:498][ 78]LogModuleManager: Shutting down and abandoning module DirectoryWatcher (157)
+[2020.03.20-08.40.19:501][ 78]LogModuleManager: Shutting down and abandoning module DerivedDataCache (154)
+[2020.03.20-08.40.19:552][ 78]LogDerivedDataCache: Shutdown
+[2020.03.20-08.40.19:552][ 78]LogModuleManager: Shutting down and abandoning module XGEController (152)
+[2020.03.20-08.40.19:552][ 78]LogModuleManager: Shutting down and abandoning module TargetPlatform (150)
+[2020.03.20-08.40.19:553][ 78]LogModuleManager: Shutting down and abandoning module VulkanShaderFormat (149)
+[2020.03.20-08.40.19:553][ 78]LogModuleManager: Shutting down and abandoning module ShaderFormatVectorVM (147)
+[2020.03.20-08.40.19:553][ 78]LogModuleManager: Shutting down and abandoning module ShaderFormatOpenGL (145)
+[2020.03.20-08.40.19:553][ 78]LogModuleManager: Shutting down and abandoning module ShaderFormatD3D (143)
+[2020.03.20-08.40.19:553][ 78]LogModuleManager: Shutting down and abandoning module MetalShaderFormat (141)
+[2020.03.20-08.40.19:553][ 78]LogModuleManager: Shutting down and abandoning module TextureFormatUncompressed (139)
+[2020.03.20-08.40.19:553][ 78]LogModuleManager: Shutting down and abandoning module TextureFormatPVR (137)
+[2020.03.20-08.40.19:553][ 78]LogModuleManager: Shutting down and abandoning module TextureFormatDXT (135)
+[2020.03.20-08.40.19:553][ 78]LogModuleManager: Shutting down and abandoning module TextureFormatIntelISPCTexComp (133)
+[2020.03.20-08.40.19:553][ 78]LogModuleManager: Shutting down and abandoning module TextureFormatASTC (131)
+[2020.03.20-08.40.19:553][ 78]LogModuleManager: Shutting down and abandoning module ImageWrapper (130)
+[2020.03.20-08.40.19:553][ 78]LogModuleManager: Shutting down and abandoning module TextureFormatAndroid (127)
+[2020.03.20-08.40.19:553][ 78]LogModuleManager: Shutting down and abandoning module AudioFormatOpus (125)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module AudioFormatOgg (123)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module AudioFormatADPCM (121)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module LinuxTargetPlatform (119)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module LinuxServerTargetPlatform (117)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module LinuxNoEditorTargetPlatform (115)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module LinuxClientTargetPlatform (113)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module TVOSTargetPlatform (111)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module Messaging (109)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module IOSTargetPlatform (107)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module HTML5TargetPlatform (105)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module AndroidTargetPlatform (103)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module Android_PVRTCTargetPlatform (101)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module Android_MultiTargetPlatform (99)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module Android_ETC2TargetPlatform (97)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module Android_ETC1TargetPlatform (95)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module Android_ETC1aTargetPlatform (93)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module Android_DXTTargetPlatform (91)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module Android_ATCTargetPlatform (89)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module Android_ASTCTargetPlatform (87)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module WindowsTargetPlatform (85)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module WindowsServerTargetPlatform (83)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module WindowsNoEditorTargetPlatform (81)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module WindowsClientTargetPlatform (79)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module MacTargetPlatform (77)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module MacServerTargetPlatform (75)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module MacNoEditorTargetPlatform (73)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module MacClientTargetPlatform (71)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module AllDesktopTargetPlatform (69)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module InputCore (66)
+[2020.03.20-08.40.19:554][ 78]LogModuleManager: Shutting down and abandoning module Settings (64)
+[2020.03.20-08.40.19:555][ 78]LogModuleManager: Shutting down and abandoning module PhysXCooking (62)
+[2020.03.20-08.40.19:555][ 78]LogModuleManager: Shutting down and abandoning module SteamVR (60)
+[2020.03.20-08.40.19:555][ 78]LogModuleManager: Shutting down and abandoning module OculusHMD (58)
+[2020.03.20-08.40.19:555][ 78]LogModuleManager: Shutting down and abandoning module ExampleDeviceProfileSelector (56)
+[2020.03.20-08.40.19:555][ 78]LogModuleManager: Shutting down and abandoning module AppleARKit (54)
+[2020.03.20-08.40.19:555][ 78]LogModuleManager: Shutting down and abandoning module AugmentedReality (51)
+[2020.03.20-08.40.19:555][ 78]LogModuleManager: Shutting down and abandoning module OnlineBlueprintSupport (48)
+[2020.03.20-08.40.19:555][ 78]LogModuleManager: Shutting down and abandoning module OnlineSubsystem (44)
+[2020.03.20-08.40.19:555][ 78]LogModuleManager: Shutting down and abandoning module XMPP (43)
+[2020.03.20-08.40.19:555][ 78]LogModuleManager: Shutting down and abandoning module HTTP (41)
+[2020.03.20-08.40.19:555][ 78]LogHttp: Display: Http module shutting down, but needs to wait on 1 outstanding Http requests:
+[2020.03.20-08.40.19:555][ 78]LogHttp: Display: 	verb=[POST] url=[https://datarouter.ol.epicgames.com/datarouter/api/v1/public/data?SessionID=%7BA7E23A28-4584-55E1-976A-06A66F03DA25%7D&AppID=UEEditor.Rocket.Release&AppVersion=4.19.2-4033788%2B%2B%2BUE4%2BRelease-4.19&UserID=740da03f4792943c42af93a8c1c8b86c%7C2397b827324e4e5598fb5ad28a0dc807%7C83286504-9604-4079-bf43-91e8b426d79c&AppEnvironment=datacollector-binary&UploadType=eteventstream] status=Processing
+[2020.03.20-08.40.19:586][ 78]LogModuleManager: Shutting down and abandoning module SSL (40)
+[2020.03.20-08.40.19:589][ 78]LogModuleManager: Shutting down and abandoning module AnimationModifiers (36)
+[2020.03.20-08.40.19:591][ 78]LogModuleManager: Shutting down and abandoning module PropertyEditor (35)
+[2020.03.20-08.40.19:591][ 78]LogModuleManager: Shutting down and abandoning module AudioEditor (32)
+[2020.03.20-08.40.19:591][ 78]LogModuleManager: Shutting down and abandoning module TextureCompressor (30)
+[2020.03.20-08.40.19:591][ 78]LogModuleManager: Shutting down and abandoning module ShaderCore (28)
+[2020.03.20-08.40.19:591][ 78]LogModuleManager: Shutting down and abandoning module Landscape (26)
+[2020.03.20-08.40.19:591][ 78]LogModuleManager: Shutting down and abandoning module SlateRHIRenderer (24)
+[2020.03.20-08.40.19:612][ 78]LogModuleManager: Shutting down and abandoning module OpenGLDrv (22)
+[2020.03.20-08.40.19:613][ 78]LogModuleManager: Shutting down and abandoning module D3D11RHI (20)
+[2020.03.20-08.40.19:613][ 78]LogModuleManager: Shutting down and abandoning module AnimGraphRuntime (18)
+[2020.03.20-08.40.19:613][ 78]LogModuleManager: Shutting down and abandoning module Renderer (16)
+[2020.03.20-08.40.19:613][ 78]LogModuleManager: Shutting down and abandoning module Engine (14)
+[2020.03.20-08.40.19:613][ 78]LogModuleManager: Shutting down and abandoning module CoreUObject (12)
+[2020.03.20-08.40.19:613][ 78]LogModuleManager: Shutting down and abandoning module NetworkFile (10)
+[2020.03.20-08.40.19:613][ 78]LogModuleManager: Shutting down and abandoning module CookedIterativeFile (8)
+[2020.03.20-08.40.19:613][ 78]LogModuleManager: Shutting down and abandoning module StreamingFile (6)
+[2020.03.20-08.40.19:613][ 78]LogModuleManager: Shutting down and abandoning module SandboxFile (4)
+[2020.03.20-08.40.19:613][ 78]LogModuleManager: Shutting down and abandoning module PakFile (2)
+[2020.03.20-08.40.19:624][ 78]LogExit: Exiting.
+[2020.03.20-08.40.19:661][ 78]Log file closed, 03/20/20 17:40:19
