@@ -42,6 +42,24 @@ void UIBAnimInstance::PlayAttackMontage()
 	Montage_Play(AttackMontage, 1.0f);	
 }
 
+void UIBAnimInstance::JumpToAttackMontageSection(int32 NewSection)
+{
+	ABCHECK(Montage_IsPlaying(AttackMontage));
+	Montage_JumpToSection(GetAttackMontageSectionName(NewSection), AttackMontage);
+}
+
 void UIBAnimInstance::AnimNotify_AttackHitCheck()
 {
+	OnAttackHitCheck.Broadcast();
+}
+
+void UIBAnimInstance::AnimNotify_NextAttackCheck()
+{
+	OnNextAttackCheck.Broadcast();
+}
+
+FName UIBAnimInstance::GetAttackMontageSectionName(int32 Section)
+{
+	ABCHECK(FMath::IsWithinInclusive<int32>(Section, 1, 4), NAME_None);
+	return FName(*FString::Printf(TEXT("Attack%d"), Section));
 }
