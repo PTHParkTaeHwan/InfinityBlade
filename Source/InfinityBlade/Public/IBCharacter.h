@@ -52,6 +52,13 @@ public:
 	
 public:
 	bool GetIsRun();
+	
+	//무기 아이템 습득
+	bool CanSetWeapon();
+	void SetWeapon(class AIBWeapon* NewWeapon);
+		
+	UPROPERTY(VisibleAnywhere, Category = Weapon)
+	class AIBWeapon* CurrentWeapon;
 
 private:
 	//캐릭터 움직임
@@ -92,6 +99,7 @@ private:
 	//공격 충돌처리
 	void AttackCheck();
 
+
 private:
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = Attack, Meta = (AllowPrivateAccess = true))
 	bool IsAttacking;
@@ -116,5 +124,10 @@ private:
 
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = Attack, Meta = (AllowPrivateAccess = true))
 	float AttackRadius;
+
+//파티클 시스템
+public:
+	UPROPERTY(VisibleAnywhere, Category = Effect)
+	UParticleSystemComponent* FirstHitEffect;
 
 };

@@ -21,6 +21,7 @@ AIBWeapon::AIBWeapon()
 
 	Weapon->SetCollisionProfileName(TEXT("NoCollision"));
 
+	
 
 }
 
@@ -30,3 +31,4 @@ void AIBWeapon::BeginPlay()
 	Super::BeginPlay();
 	
 }
+

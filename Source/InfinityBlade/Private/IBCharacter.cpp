@@ -76,6 +76,18 @@ AIBCharacter::AIBCharacter()
 	//공격 범위 디버그
 	AttackRange = 250.0f;
 	AttackRadius = 90.0f;
+
+	//파티클 시스템
+	FirstHitEffect = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("HITEFFECT"));
+	FirstHitEffect->SetupAttachment(RootComponent);
+	static ConstructorHelpers::FObjectFinder<UParticleSystem> P_HIT(TEXT("/Game/InfinityBladeEffects/Effects/FX_Combat_Base/Impact/P_ImpactSpark.P_ImpactSpark"));
+	if (P_HIT.Succeeded())
+	{
+		FirstHitEffect->SetTemplate(P_HIT.Object);
+		FirstHitEffect->bAutoActivate = false;
+	}
+
+
 }
 
 // Called when the game starts or when spawned
@@ -83,13 +95,13 @@ void AIBCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	//무기 액터로 부착하기
-	FName WeaponSocket(TEXT("hand_rSocket"));
-	auto CurWeapon = GetWorld()->SpawnActor<AIBWeapon>(FVector::ZeroVector, FRotator::ZeroRotator);
-	if (nullptr != CurWeapon)
-	{
-		CurWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, WeaponSocket);
-	}
+	////무기 액터로 부착하기
+	//FName WeaponSocket(TEXT("hand_rSocket"));
+	//auto CurWeapon = GetWorld()->SpawnActor<AIBWeapon>(FVector::ZeroVector, FRotator::ZeroRotator);
+	//if (nullptr != CurWeapon)
+	//{
+	//	CurWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, WeaponSocket);
+	//}
 
 
 
@@ -183,12 +195,12 @@ float AIBCharacter::TakeDamage(float DamageAmount, FDamageEvent const & DamageEv
 {
 	float FinalDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 	ABLOG(Warning, TEXT("%s , %f"), *GetName(), FinalDamage);
-
-	if (FinalDamage > 0.0f)
+	FirstHitEffect->Activate(true);
+	/*if (FinalDamage > 0.0f)
 	{
 		IBAnim->SetDeadAnim();
 		SetActorEnableCollision(false);
-	}
+	}*/
 
 	return FinalDamage;
 }
@@ -213,6 +225,22 @@ void AIBCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 bool AIBCharacter::GetIsRun()
 {
 	return IsRun;
+}
+bool AIBCharacter::CanSetWeapon()
+{
+	return (nullptr == CurrentWeapon);
+}
+void AIBCharacter::SetWeapon(AIBWeapon * NewWeapon)
+{
+	ABCHECK(nullptr != NewWeapon && nullptr == CurrentWeapon);
+	FName WeaponSocket(TEXT("hand_rSocket"));
+	if (nullptr != NewWeapon)
+	{
+		NewWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale, WeaponSocket);
+		NewWeapon->SetOwner(this);
+		CurrentWeapon = NewWeapon;
+	}
+
 }
 void AIBCharacter::UpDown(float NewAxisValue)
 {
