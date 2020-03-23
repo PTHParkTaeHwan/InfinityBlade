@@ -9,6 +9,7 @@ UIBAnimInstance::UIBAnimInstance()
 	CurrentPawnSpeed = 0.0f;
 	IsInAir = false;
 	IsDead = false;
+	IsDefense = false;
 	static ConstructorHelpers::FObjectFinder<UAnimMontage> ATTACK_MONTAGE(TEXT("/Game/Book/Animations/SK_Mannequin_Skeleton_Montage.SK_Mannequin_Skeleton_Montage"));
 	if (ATTACK_MONTAGE.Succeeded())
 	{
@@ -39,10 +40,9 @@ void UIBAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		if (testCh)
 		{			
 			IsRun = testCh->GetIsRun();
+			IsDefense = testCh->GetIsDefense();
 		}
 	}
-
-
 }
 
 void UIBAnimInstance::PlayAttackMontage()

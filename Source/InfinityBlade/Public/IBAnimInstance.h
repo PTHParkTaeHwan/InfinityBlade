@@ -11,11 +11,14 @@ DECLARE_MULTICAST_DELEGATE(FOnAttackHitCheckDelegate);
 /**
  * 
  */
+
+
 UCLASS()
 class INFINITYBLADE_API UIBAnimInstance : public UAnimInstance
 {
 	GENERATED_BODY()
 	
+
 public:
 	UIBAnimInstance();
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
@@ -47,6 +50,9 @@ private:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Pawn, Meta = (AllowPrivateAccess = true))
 	bool IsRun;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Pawn, Meta = (AllowPrivateAccess = true))
+	bool IsDefense;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Attack, Meta = (AllowPrivateAccess = true))
 	UAnimMontage* AttackMontage;

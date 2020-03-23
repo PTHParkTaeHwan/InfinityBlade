@@ -43,6 +43,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, Category = Weapon)
 	USkeletalMeshComponent* Weapon;
+	
+	UPROPERTY(VisibleAnywhere, Category = Stat)
+	class UIBCharacterStatComponent* CharacterStat;
 
 	UPROPERTY(VisibleAnywhere, Category = Camera)
 	USpringArmComponent* SpringArm;
@@ -52,6 +55,7 @@ public:
 	
 public:
 	bool GetIsRun();
+	bool GetIsDefense();
 	
 	//무기 아이템 습득
 	bool CanSetWeapon();
@@ -85,6 +89,7 @@ private:
 
 	bool IsRun;
 	bool CurrentShiftButtonOn;
+	bool IsDefense;
 
 	//공격 모션
 	void Attack();

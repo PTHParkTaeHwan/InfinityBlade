@@ -3,7 +3,9 @@
 #include "IBCharacter.h"
 #include "IBAnimInstance.h"
 #include "IBWeapon.h"
+#include "IBCharacterStatComponent.h"
 #include "DrawDebugHelpers.h"
+
 
 // Sets default values
 AIBCharacter::AIBCharacter()
@@ -13,6 +15,7 @@ AIBCharacter::AIBCharacter()
 	//Pawn에 캡슐, 메쉬, 무브먼트를 가져올 수 있는 함수가 있기 때문에 스프링 암과 카메라만 따로 만들어준다.
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SPRINGARM"));
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("CAMERA"));
+	CharacterStat = CreateDefaultSubobject<UIBCharacterStatComponent>(TEXT("CHARACTERSTAT"));
 
 	SpringArm->SetupAttachment(GetCapsuleComponent());
 	Camera->SetupAttachment(SpringArm);
@@ -62,11 +65,13 @@ AIBCharacter::AIBCharacter()
 	IsRun = false;
 	CurrentShiftButtonOn = false;
 	GetCharacterMovement()->MaxWalkSpeed = 400;
+	
+	
 
 	//공격 모션 관리
 	IsAttacking = false;
 
-	//공격 콤포 관리
+	//공격 콤보 관리
 	MaxCombo = 4;
 	AttackEndComboState();
 
@@ -115,9 +120,9 @@ void AIBCharacter::SetControlMode(EControlMode NewControlMode)
 	switch (CurrentControlMode)
 	{
 	case EControlMode::GTA:
+		IsDefense = false;
 		ArmLengthTo = 450.0f;
 		CameraLocationTo = FVector(0.0f, 0.0f, 0.0f);
-		//ArmLocationTo = FVector(0.0f, 0.0f, 0.0f);
 		SpringArm->SetRelativeRotation(FRotator::ZeroRotator);
 		SpringArm->bUsePawnControlRotation = true;
 		SpringArm->bInheritPitch = true;
@@ -127,13 +132,11 @@ void AIBCharacter::SetControlMode(EControlMode NewControlMode)
 		bUseControllerRotationYaw = false;
 		GetCharacterMovement()->bOrientRotationToMovement = true;
 		GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
-		//Camera->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
 		break;
 	case EControlMode::DEFENSE:
+		IsDefense = true;
 		ArmLengthTo = 180.0f;
 		CameraLocationTo = FVector(0.0f, -30.0f, 50.0f);
-		//ArmLocationTo = FVector(0.0f, -30.0f, 50.0f);
-		//SpringArm->SetRelativeRotation(FRotator::ZeroRotator);
 		SpringArm->bUsePawnControlRotation = true;
 		SpringArm->bInheritPitch = true;
 		SpringArm->bInheritRoll = true;
@@ -142,31 +145,26 @@ void AIBCharacter::SetControlMode(EControlMode NewControlMode)
 		bUseControllerRotationYaw = false;
 		GetCharacterMovement()->bOrientRotationToMovement = true;
 		GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
-		//Camera->SetRelativeLocation(FVector(0.0f, -30.0f, 50.0f));
 		break;
 	}
-
 }
-
 
 // Called every frame
 void AIBCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);	
 	SpringArm->TargetArmLength = FMath::FInterpTo(SpringArm->TargetArmLength, ArmLengthTo, DeltaTime, ArmLengthSpeed);
-	//SpringArm->RelativeLocation = FMath::VInterpTo(SpringArm->RelativeLocation, ArmLocationTo, DeltaTime, ArmLocationSpeed);
 	Camera->RelativeLocation = FMath::VInterpTo(Camera->RelativeLocation, CameraLocationTo, DeltaTime, CameraLocationSpeed);
-
-	switch (CurrentControlMode)
-	{
-	case AIBCharacter::EControlMode::GTA:
-		break;
-	case AIBCharacter::EControlMode::DEFENSE:
-		break;
-	}
 
 	RunChange();
 
+	switch (CurrentControlMode)
+	{
+	case AIBCharacter::EControlMode::DEFENSE:
+		break;
+	}
+	//ABLOG(Warning, TEXT("%d"), GetCharacterMovement()->);
+	
 }
 
 void AIBCharacter::PostInitializeComponents()
@@ -189,6 +187,12 @@ void AIBCharacter::PostInitializeComponents()
 	});
 
 	IBAnim->OnAttackHitCheck.AddUObject(this, &AIBCharacter::AttackCheck);
+
+	CharacterStat->OnHPIsZero.AddLambda([this]() -> void {
+		ABLOG(Warning, TEXT("OnHPIsZero"));
+		IBAnim->SetDeadAnim();
+		SetActorEnableCollision(false);
+	});
 }
 
 float AIBCharacter::TakeDamage(float DamageAmount, FDamageEvent const & DamageEvent, AController * EventInstigator, AActor * DamageCauser)
@@ -196,11 +200,16 @@ float AIBCharacter::TakeDamage(float DamageAmount, FDamageEvent const & DamageEv
 	float FinalDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 	ABLOG(Warning, TEXT("%s , %f"), *GetName(), FinalDamage);
 	FirstHitEffect->Activate(true);
-	/*if (FinalDamage > 0.0f)
+	
+	switch (CurrentControlMode)
 	{
-		IBAnim->SetDeadAnim();
-		SetActorEnableCollision(false);
-	}*/
+	case AIBCharacter::EControlMode::GTA:
+		CharacterStat->SetDamage(FinalDamage);
+		break;
+	case AIBCharacter::EControlMode::DEFENSE:
+		CharacterStat->SetDamage(FinalDamage/2.0f);
+		break;
+	}
 
 	return FinalDamage;
 }
@@ -226,6 +235,10 @@ bool AIBCharacter::GetIsRun()
 {
 	return IsRun;
 }
+bool AIBCharacter::GetIsDefense()
+{
+	return IsDefense;
+}
 bool AIBCharacter::CanSetWeapon()
 {
 	return (nullptr == CurrentWeapon);
@@ -244,29 +257,13 @@ void AIBCharacter::SetWeapon(AIBWeapon * NewWeapon)
 }
 void AIBCharacter::UpDown(float NewAxisValue)
 {
-	switch (CurrentControlMode)
-	{
-	case AIBCharacter::EControlMode::GTA:
-		AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::X), NewAxisValue);
-		break;
-	case AIBCharacter::EControlMode::DEFENSE:
-		AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::X), NewAxisValue);
-		break;
-	}
-
+	if(!IsAttacking) AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::X), NewAxisValue);
+	else AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::X), NewAxisValue/100);
 }
 void AIBCharacter::LeftRight(float NewAxisValue)
 {
-	switch (CurrentControlMode)
-	{
-	case AIBCharacter::EControlMode::GTA:
-		AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::Y), NewAxisValue);
-		break;
-	case AIBCharacter::EControlMode::DEFENSE:
-		AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::Y), NewAxisValue);
-		break;
-	}
-
+	if (!IsAttacking) AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::Y), NewAxisValue);
+	else  AddMovementInput(FRotationMatrix(GetControlRotation()).GetUnitAxis(EAxis::Y), NewAxisValue/100);
 }
 void AIBCharacter::LookUp(float NewAxisValue)
 {
@@ -282,33 +279,40 @@ void AIBCharacter::ModeChange()
 {
 	if (CurrentControlMode == EControlMode::GTA)
 	{
-//GetController()->SetControlRotation(GetActorRotation());
-SetControlMode(EControlMode::DEFENSE);
+		SetControlMode(EControlMode::DEFENSE);
 	}
 	else if (CurrentControlMode == EControlMode::DEFENSE)
 	{
-	//GetController()->SetControlRotation(SpringArm->RelativeRotation);
-	SetControlMode(EControlMode::GTA);
+		SetControlMode(EControlMode::GTA);
 	}
 }
 
 void AIBCharacter::RunChange()
 {
-	if (CurrentShiftButtonOn && this->GetVelocity().Size() > 0)
+	switch (CurrentControlMode)
 	{
-		IsRun = true;
-		GetCharacterMovement()->MaxWalkSpeed = 600;
+	case AIBCharacter::EControlMode::GTA:
+		if (CurrentShiftButtonOn && this->GetVelocity().Size() > 0)
+		{
+			IsRun = true;
+			GetCharacterMovement()->MaxWalkSpeed = 600;
+		}
+		else if (!CurrentShiftButtonOn && this->GetVelocity().Size() > 0)
+		{
+			IsRun = false;
+			GetCharacterMovement()->MaxWalkSpeed = 400;
+		}
+		else
+		{
+			IsRun = false;
+			GetCharacterMovement()->MaxWalkSpeed = 400;
+		}
+		break;
+	case AIBCharacter::EControlMode::DEFENSE:
+		GetCharacterMovement()->MaxWalkSpeed = 200;
+		break;
 	}
-	else if (!CurrentShiftButtonOn && this->GetVelocity().Size() > 0)
-	{
-		IsRun = false;
-		GetCharacterMovement()->MaxWalkSpeed = 400;
-	}
-	else
-	{
-		IsRun = false;
-		GetCharacterMovement()->MaxWalkSpeed = 400;
-	}
+	
 }
 
 void AIBCharacter::ShiftButtonChange()
@@ -325,21 +329,26 @@ void AIBCharacter::ShiftButtonChange()
 
 void AIBCharacter::Attack()
 {
-	if (IsAttacking)
+	switch (CurrentControlMode)
 	{
-		ABCHECK(FMath::IsWithinInclusive<int32>(CurrentCombo, 1, MaxCombo));
-		if (CanNextCombo)
+	case AIBCharacter::EControlMode::GTA:
+		if (IsAttacking)
 		{
-			IsComboInputOn = true;
+			ABCHECK(FMath::IsWithinInclusive<int32>(CurrentCombo, 1, MaxCombo));
+			if (CanNextCombo)
+			{
+				IsComboInputOn = true;
+			}
 		}
-	}
-	else
-	{
-		ABCHECK(CurrentCombo == 0);
-		AttackStartComboState();
-		IBAnim->PlayAttackMontage();
-		IBAnim->JumpToAttackMontageSection(CurrentCombo);
-		IsAttacking = true;
+		else
+		{
+			ABCHECK(CurrentCombo == 0);
+			AttackStartComboState();
+			IBAnim->PlayAttackMontage();
+			IBAnim->JumpToAttackMontageSection(CurrentCombo);
+			IsAttacking = true;
+		}
+		break;
 	}
 }
 
@@ -402,10 +411,16 @@ void AIBCharacter::AttackCheck()
 	{
 		for (FHitResult HitResult : HitResults)
 		{
-			ABLOG(Warning, TEXT("hit! %s"), *HitResult.Actor->GetName());
-
-			FDamageEvent DamageEvent;
-			HitResult.Actor->TakeDamage(50.0f, DamageEvent, GetController(), this);
+			if (CurrentCombo < 4)
+			{
+				FDamageEvent DamageEvent;
+				HitResult.Actor->TakeDamage(CharacterStat->GetAttack(), DamageEvent, GetController(), this);
+			}
+			else
+			{
+				FDamageEvent DamageEvent;
+				HitResult.Actor->TakeDamage(CharacterStat->GetAttack()*2, DamageEvent, GetController(), this);
+			}
 		}
 	}
 }
