@@ -39,8 +39,8 @@ void UIBCharacterStatComponent::SetNewLevel(int32 NewLevel)
 	if (nullptr != CurrentStatData)
 	{
 		Level = NewLevel;
-		CurrentHP = CurrentStatData->MaxHP;
-		CurrentShieldEnergy = CurrentStatData->ShieldEnergy;
+		SetHP(CurrentStatData->MaxHP);
+		SetSE(CurrentStatData->ShieldEnergy);
 	}
 	else
 	{
@@ -56,32 +56,58 @@ void UIBCharacterStatComponent::SetDamage(float NewDamage)
 	
 	if (CurrentShieldEnergy >= NewDamage)
 	{
-		CurrentShieldEnergy = FMath::Clamp<float>(CurrentShieldEnergy - NewDamage, 0.0f, CurrentStatData->ShieldEnergy);
+		SetSE(FMath::Clamp<float>(CurrentShieldEnergy - NewDamage, 0.0f, CurrentStatData->ShieldEnergy));
 	}
 	else if (CurrentShieldEnergy < NewDamage && CurrentShieldEnergy > 0.0f)
 	{
 		float temp = NewDamage - CurrentShieldEnergy;
-		CurrentShieldEnergy = 0.0f;
-		CurrentHP = FMath::Clamp<float>(CurrentHP - temp*2.0f, 0.0f, CurrentStatData->MaxHP);
-
+		SetSE(0.0f);
+		SetHP(FMath::Clamp<float>(CurrentHP - temp, 0.0f, CurrentStatData->MaxHP));
 	}
 	else if (CurrentShieldEnergy <= 0.0f)
 	{
-		CurrentHP = FMath::Clamp<float>(CurrentHP - NewDamage * 2.0f, 0.0f, CurrentStatData->MaxHP);
+		SetHP(FMath::Clamp<float>(CurrentHP - NewDamage, 0.0f, CurrentStatData->MaxHP));
 	}
 	
 	//CurrentHP = FMath::Clamp<float>(CurrentHP - NewDamage, 0.0f, CurrentStatData->MaxHP);
 
-	if (CurrentHP <= 0.0f)
+}
+
+void UIBCharacterStatComponent::SetHP(float NewHP)
+{
+	CurrentHP = NewHP;
+	OnHPChanged.Broadcast();
+	if (CurrentHP < KINDA_SMALL_NUMBER)
 	{
 		OnHPIsZero.Broadcast();
 	}
+
+}
+
+void UIBCharacterStatComponent::SetSE(float NewSE)
+{
+	CurrentShieldEnergy = NewSE;
+	OnSEChanged.Broadcast();
 }
 
 float UIBCharacterStatComponent::GetAttack()
 {
 	ABCHECK(nullptr != CurrentStatData, 0.0f);
 	return CurrentStatData->Attack;
+}
+
+float UIBCharacterStatComponent::GetHPRatio()
+{
+	ABCHECK(nullptr != CurrentStatData, 0.0f);
+
+	return (CurrentStatData->MaxHP < KINDA_SMALL_NUMBER) ? 0.0f : (CurrentHP / CurrentStatData->MaxHP);
+}
+
+float UIBCharacterStatComponent::GetSERatio()
+{
+	ABCHECK(nullptr != CurrentStatData, 0.0f);
+
+	return (CurrentStatData->ShieldEnergy < KINDA_SMALL_NUMBER) ? 0.0f : (CurrentShieldEnergy / CurrentStatData->ShieldEnergy);
 }
 
 

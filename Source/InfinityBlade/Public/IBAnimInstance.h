@@ -24,6 +24,7 @@ public:
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 
 	void PlayAttackMontage();
+	void StopAttackMontage();
 	void JumpToAttackMontageSection(int32 NewSection);
 
 public:

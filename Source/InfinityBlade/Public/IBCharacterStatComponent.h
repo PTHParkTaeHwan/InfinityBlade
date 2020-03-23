@@ -7,6 +7,8 @@
 #include "IBCharacterStatComponent.generated.h"
 
 DECLARE_MULTICAST_DELEGATE(FOnHPIsZeroDelegate);
+DECLARE_MULTICAST_DELEGATE(FOnHPChangedDelegate);
+DECLARE_MULTICAST_DELEGATE(FOnSEChangedDelegate);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class INFINITYBLADE_API UIBCharacterStatComponent : public UActorComponent
@@ -24,9 +26,15 @@ protected:
 public:
 	void SetNewLevel(int32 NewLevel);
 	void SetDamage(float NewDamage);
+	void SetHP(float NewHP);
+	void SetSE(float NewSE);
 	float GetAttack();
+	float GetHPRatio();
+	float GetSERatio();
 
 	FOnHPIsZeroDelegate OnHPIsZero;
+	FOnHPChangedDelegate OnHPChanged;
+	FOnSEChangedDelegate OnSEChanged;
 
 private:
 	struct FIBCharacterData* CurrentStatData = nullptr;

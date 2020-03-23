@@ -48,7 +48,12 @@ void UIBAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 void UIBAnimInstance::PlayAttackMontage()
 {
 	ABCHECK(!IsDead);
-	Montage_Play(AttackMontage, 1.0f);	
+	Montage_Play(AttackMontage, 1.0f);
+}
+
+void UIBAnimInstance::StopAttackMontage()
+{
+	Montage_Stop(0.1f, AttackMontage);
 }
 
 void UIBAnimInstance::JumpToAttackMontageSection(int32 NewSection)

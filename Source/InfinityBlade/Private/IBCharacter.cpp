@@ -5,7 +5,8 @@
 #include "IBWeapon.h"
 #include "IBCharacterStatComponent.h"
 #include "DrawDebugHelpers.h"
-
+#include "Components/WidgetComponent.h"
+#include "IBCharacterWidget.h"
 
 // Sets default values
 AIBCharacter::AIBCharacter()
@@ -16,9 +17,11 @@ AIBCharacter::AIBCharacter()
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SPRINGARM"));
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("CAMERA"));
 	CharacterStat = CreateDefaultSubobject<UIBCharacterStatComponent>(TEXT("CHARACTERSTAT"));
+	HPBarWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("HPBARWIDGET"));
 
 	SpringArm->SetupAttachment(GetCapsuleComponent());
 	Camera->SetupAttachment(SpringArm);
+	HPBarWidget->SetupAttachment(GetMesh());
 
 	GetMesh()->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, -88.0f), FRotator(0.0f, -90.0f, 0.0f));
 	SpringArm->TargetArmLength = 400.0f;
@@ -92,7 +95,15 @@ AIBCharacter::AIBCharacter()
 		FirstHitEffect->bAutoActivate = false;
 	}
 
-
+	//HP, SE UI
+	HPBarWidget->SetRelativeLocation(FVector(0.0f, 0.0f, 180.0f));
+	HPBarWidget->SetWidgetSpace(EWidgetSpace::Screen);
+	static ConstructorHelpers::FClassFinder<UUserWidget> UI_HUD(TEXT("/Game/Book/UI/UI_HPUIBar.UI_HPUIBar_C"));
+	if (UI_HUD.Succeeded())
+	{
+		HPBarWidget->SetWidgetClass(UI_HUD.Class);
+		HPBarWidget->SetDrawSize(FVector2D(150.0f, 50.0f));
+	}
 }
 
 // Called when the game starts or when spawned
@@ -107,10 +118,6 @@ void AIBCharacter::BeginPlay()
 	//{
 	//	CurWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, WeaponSocket);
 	//}
-
-
-
-
 }
 
 void AIBCharacter::SetControlMode(EControlMode NewControlMode)
@@ -193,6 +200,13 @@ void AIBCharacter::PostInitializeComponents()
 		IBAnim->SetDeadAnim();
 		SetActorEnableCollision(false);
 	});
+
+	auto CharacterWidget = Cast<UIBCharacterWidget>(HPBarWidget->GetUserWidgetObject());
+	if (nullptr != CharacterWidget)
+	{
+		CharacterWidget->BindCharacterStat(CharacterStat);
+	}
+
 }
 
 float AIBCharacter::TakeDamage(float DamageAmount, FDamageEvent const & DamageEvent, AController * EventInstigator, AActor * DamageCauser)
@@ -320,6 +334,9 @@ void AIBCharacter::ShiftButtonChange()
 	if (!CurrentShiftButtonOn)
 	{
 		CurrentShiftButtonOn = true;
+		IsAttacking = false;
+		AttackEndComboState();
+		IBAnim->StopAttackMontage();
 	}
 	else if (CurrentShiftButtonOn)
 	{
