@@ -7,6 +7,7 @@
 #include "DrawDebugHelpers.h"
 #include "Components/WidgetComponent.h"
 #include "IBCharacterWidget.h"
+#include "IBAIController.h"
 
 // Sets default values
 AIBCharacter::AIBCharacter()
@@ -104,6 +105,9 @@ AIBCharacter::AIBCharacter()
 		HPBarWidget->SetWidgetClass(UI_HUD.Class);
 		HPBarWidget->SetDrawSize(FVector2D(150.0f, 50.0f));
 	}
+
+	AIControllerClass = AIBAIController::StaticClass();
+	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 }
 
 // Called when the game starts or when spawned
@@ -152,6 +156,12 @@ void AIBCharacter::SetControlMode(EControlMode NewControlMode)
 		bUseControllerRotationYaw = false;
 		GetCharacterMovement()->bOrientRotationToMovement = true;
 		GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
+		break;
+	case EControlMode::NPC:
+		bUseControllerRotationYaw = false;
+		GetCharacterMovement()->bUseControllerDesiredRotation = false;
+		GetCharacterMovement()->bOrientRotationToMovement = true;
+		GetCharacterMovement()->RotationRate = FRotator(0.0f, 480.0f, 0.0f);
 		break;
 	}
 }
@@ -218,14 +228,32 @@ float AIBCharacter::TakeDamage(float DamageAmount, FDamageEvent const & DamageEv
 	switch (CurrentControlMode)
 	{
 	case AIBCharacter::EControlMode::GTA:
-		CharacterStat->SetDamage(FinalDamage);
+		CharacterStat->SetDamage(FinalDamage, false);
 		break;
 	case AIBCharacter::EControlMode::DEFENSE:
-		CharacterStat->SetDamage(FinalDamage/2.0f);
+		CharacterStat->SetDamage(FinalDamage, true);
 		break;
+	}
+	if (CurrentControlMode == AIBCharacter::EControlMode::NPC)
+	{
+		CharacterStat->SetDamage(FinalDamage, false);
 	}
 
 	return FinalDamage;
+}
+
+void AIBCharacter::PossessedBy(AController * NewController)
+{
+	Super::PossessedBy(NewController);
+	if (IsPlayerControlled())
+	{
+		SetControlMode(EControlMode::GTA);
+	}
+	else
+	{
+		SetControlMode(EControlMode::NPC);
+		GetCharacterMovement()->MaxWalkSpeed = 300.0f;
+	}
 }
 
 // Called to bind functionality to input
@@ -348,6 +376,24 @@ void AIBCharacter::Attack()
 {
 	switch (CurrentControlMode)
 	{
+	case AIBCharacter::EControlMode::NPC:
+		if (IsAttacking)
+		{
+			ABCHECK(FMath::IsWithinInclusive<int32>(CurrentCombo, 1, MaxCombo));
+			if (CanNextCombo)
+			{
+				IsComboInputOn = true;
+			}
+		}
+		else
+		{
+			ABCHECK(CurrentCombo == 0);
+			AttackStartComboState();
+			IBAnim->PlayAttackMontage();
+			IBAnim->JumpToAttackMontageSection(CurrentCombo);
+			IsAttacking = true;
+		}
+		break;
 	case AIBCharacter::EControlMode::GTA:
 		if (IsAttacking)
 		{
@@ -375,6 +421,7 @@ void AIBCharacter::OnAttackMontageEnded(UAnimMontage * Montage, bool bInterrupte
 	ABCHECK(CurrentCombo > 0);
 	IsAttacking = false;
 	AttackEndComboState();
+	OnAttackEnd.Broadcast();
 }
 
 void AIBCharacter::AttackStartComboState()

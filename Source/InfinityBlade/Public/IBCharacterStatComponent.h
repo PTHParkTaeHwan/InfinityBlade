@@ -25,7 +25,7 @@ protected:
 	
 public:
 	void SetNewLevel(int32 NewLevel);
-	void SetDamage(float NewDamage);
+	void SetDamage(float NewDamage, bool DefenseModeOn);
 	void SetHP(float NewHP);
 	void SetSE(float NewSE);
 	float GetAttack();

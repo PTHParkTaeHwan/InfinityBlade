@@ -50,27 +50,32 @@ void UIBCharacterStatComponent::SetNewLevel(int32 NewLevel)
 
 }
 
-void UIBCharacterStatComponent::SetDamage(float NewDamage)
+void UIBCharacterStatComponent::SetDamage(float NewDamage, bool DefenseModeOn)
 {
 	ABCHECK(nullptr != CurrentStatData);
 	
-	if (CurrentShieldEnergy >= NewDamage)
-	{
-		SetSE(FMath::Clamp<float>(CurrentShieldEnergy - NewDamage, 0.0f, CurrentStatData->ShieldEnergy));
-	}
-	else if (CurrentShieldEnergy < NewDamage && CurrentShieldEnergy > 0.0f)
-	{
-		float temp = NewDamage - CurrentShieldEnergy;
-		SetSE(0.0f);
-		SetHP(FMath::Clamp<float>(CurrentHP - temp, 0.0f, CurrentStatData->MaxHP));
-	}
-	else if (CurrentShieldEnergy <= 0.0f)
+	if (!DefenseModeOn)
 	{
 		SetHP(FMath::Clamp<float>(CurrentHP - NewDamage, 0.0f, CurrentStatData->MaxHP));
 	}
-	
-	//CurrentHP = FMath::Clamp<float>(CurrentHP - NewDamage, 0.0f, CurrentStatData->MaxHP);
-
+	else if (DefenseModeOn)
+	{
+		float TempDamage = NewDamage / 2.0f;
+		if (CurrentShieldEnergy >= TempDamage)
+		{
+			SetSE(FMath::Clamp<float>(CurrentShieldEnergy - TempDamage, 0.0f, CurrentStatData->ShieldEnergy));
+		}
+		else if (CurrentShieldEnergy < TempDamage && CurrentShieldEnergy > 0.0f)
+		{
+			float temp = (TempDamage - CurrentShieldEnergy) * 2.0f;
+			SetSE(0.0f);
+			SetHP(FMath::Clamp<float>(CurrentHP - temp, 0.0f, CurrentStatData->MaxHP));
+		}
+		else if (CurrentShieldEnergy <= 0.0f)
+		{
+			SetHP(FMath::Clamp<float>(CurrentHP - NewDamage, 0.0f, CurrentStatData->MaxHP));
+		}
+	}
 }
 
 void UIBCharacterStatComponent::SetHP(float NewHP)

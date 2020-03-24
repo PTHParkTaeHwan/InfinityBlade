@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "IBCharacter.generated.h"
 
+DECLARE_MULTICAST_DELEGATE(FOnAttackEndDelegate);
 
 
 UCLASS()
@@ -24,7 +25,8 @@ protected:
 	enum class EControlMode
 	{
 		GTA,
-		DEFENSE
+		DEFENSE,
+		NPC
 	};
 
 	void SetControlMode(EControlMode NewControlMode);
@@ -37,7 +39,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void PostInitializeComponents() override;
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const&DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
-	
+	virtual void PossessedBy(AController* NewController) override;
+
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -56,6 +59,10 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = UI)
 	class UWidgetComponent* HPBarWidget;
 	
+	//공격 모션
+	void Attack();
+	FOnAttackEndDelegate OnAttackEnd;
+
 public:
 	bool GetIsRun();
 	bool GetIsDefense();
@@ -64,6 +71,7 @@ public:
 	bool CanSetWeapon();
 	void SetWeapon(class AIBWeapon* NewWeapon);
 		
+	
 	UPROPERTY(VisibleAnywhere, Category = Weapon)
 	class AIBWeapon* CurrentWeapon;
 
@@ -94,8 +102,6 @@ private:
 	bool CurrentShiftButtonOn;
 	bool IsDefense;
 
-	//공격 모션
-	void Attack();
 
 	UFUNCTION()
 	void OnAttackMontageEnded(UAnimMontage* Montage, bool bInterrupted);
